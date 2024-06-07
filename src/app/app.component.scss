@@ -1,0 +1,47 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  padding: 20px;
+  margin-top: 200px;
+}
+
+.main-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  &__a {
+    display: flex;
+    width: 100px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    padding: 10px;
+  }
+}
+
+.title-logout {
+  font-size: 1rem;
+  background-color: rgb(177, 204, 252);
+  border: 1px solid black;
+  padding: 10px;
+  cursor: pointer;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 800px;
+}
+
+.header-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}

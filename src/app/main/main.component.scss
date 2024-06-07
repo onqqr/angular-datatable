@@ -1,0 +1,21 @@
+.main-search {
+  display: flex;
+  align-items: flex-start;
+  gap:10px;
+  padding: 10px 0px;
+}
+
+.input-search {
+  border: 1px solid black;
+  padding: 5px;
+  width: 300px;
+  background-color: azure;
+}
+
+.main-btn {
+  border: 1px solid black;
+  align-items: center;
+  background-color: rgb(239, 239, 239);
+  cursor: pointer;
+  padding: 5px;
+}
