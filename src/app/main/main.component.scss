@@ -3,6 +3,10 @@
   padding: 20px;
 }
 
+table {
+  padding-top: 10px;
+}
+
 td {
   border: 1px solid black;
 }
@@ -25,4 +29,14 @@ thead {
   padding: 3px;
   margin: 2px;
   cursor: pointer;
+}
+
+.btn-add {
+  display: flex;
+  justify-content: flex-end;
+  padding: 5px;
+  margin: 0px 10px 10px 0;
+  border: 1px solid black;
+  cursor: pointer;
+  background-color: rgb(216, 229, 250);
 }

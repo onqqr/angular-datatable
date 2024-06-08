@@ -6,6 +6,8 @@ import { HttpClient } from "@angular/common/http";
 import { Subject } from "rxjs";
 import { DataTablesModule } from "angular-datatables";
 import { Config } from "datatables.net";
+import { AdduserComponent } from "../adduser/adduser.component";
+import { MatDialog } from "@angular/material/dialog";
 
 @Component({
   selector: 'app-root',
@@ -19,18 +21,31 @@ export class MainComponent implements OnInit, OnDestroy {
   dtOptions: Config={}
   dtTrigger: Subject<any> = new Subject<any>();
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private dialog: MatDialog) {
     this.fetchUsers();
   }
 
   ngOnInit(): void {
     this.dtOptions = {
-      pagingType: 'full'
+      pagingType: 'full',
+      language: {
+        searchPlaceholder: 'Enter name user...'
+      }
     }
   }
 
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
+  }
+
+  deleteUser(user: IUsersApi) {
+    if (confirm('Are your sure you want to delete user?')) {
+      this.users = this.users.filter(u => u !== user);
+      if ($.fn.DataTable.isDataTable('#example')) {
+        $('#example').DataTable().destroy(true);
+        this.dtTrigger.next(null);
+      }
+    }
   }
 
   fetchUsers() {
@@ -40,5 +55,9 @@ export class MainComponent implements OnInit, OnDestroy {
         this.users = response.results;
         this.dtTrigger.next(null);
       });
+  }
+
+  openAddUser() {
+    this.dialog.open(AdduserComponent)
   }
 }
