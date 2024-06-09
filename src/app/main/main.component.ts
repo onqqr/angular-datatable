@@ -58,6 +58,29 @@ export class MainComponent implements OnInit, OnDestroy {
   }
 
   openAddUser() {
-    this.dialog.open(AdduserComponent)
+    const dialogRef = this.dialog.open(AdduserComponent, {
+      data: {
+        user: {
+          registered: {
+            date: new Date().toISOString().slice(0, 10)
+          },
+          name: {
+            first: '',
+            last: ''
+          },
+          email: ''
+        }
+      }
+    });;
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.users.push(result);
+        if ($.fn.DataTable.isDataTable('#example')) {
+          $('#example').DataTable().destroy(true);
+          this.dtTrigger.next(null);
+        }
+      }
+    });
   }
 }
